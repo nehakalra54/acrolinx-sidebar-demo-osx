@@ -1,0 +1,6 @@
+framework module AcrolinxPlugin {
+  umbrella header "AcrolinxPlugin.h"
+
+  export *
+  module * { export * }
+}
