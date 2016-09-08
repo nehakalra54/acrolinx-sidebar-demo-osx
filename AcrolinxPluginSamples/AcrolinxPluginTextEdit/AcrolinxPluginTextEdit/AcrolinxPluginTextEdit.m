@@ -76,8 +76,7 @@ static TextEditApplication *textEditApplication;
 }
 
 + (NSString *)clientSignature {
-    //TBD: get new client signature for text edit sample
-    return @"QWNyb2xpbnhQbHVnLWluRm9yT3V0bG9va01hYw";
+    return @"SW50ZWdyYXRpb25EZXZlbG9wbWVudERlbW9Pbmx5";
 }
 
 + (NSString *)targetBundleIdentifier {
