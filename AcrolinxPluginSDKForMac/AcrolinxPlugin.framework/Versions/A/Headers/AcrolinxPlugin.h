@@ -40,36 +40,6 @@ FOUNDATION_EXPORT const unsigned char AcrolinxPluginVersionString[];
 #import "XMLCleaner.h"
 #import "XMLLookUpHelper.h"
 #import "LocalStorageManager.h"
-/// Open 4x file
-extern NSString *const JWBaseclimbSignalOpen4x;
-/// Open the sidebar window
-extern NSString *const JWBaseclimbSignalOpenWindow;
-/// Close the sidebar window
-extern NSString *const JWBaseclimbSignalCloseWindow;
-/// Upload / Finalize and exit baseclimb
-extern NSString *const JWBaseclimbSignalFinalizteExit;
-/// Request should terminate
-extern NSString *const JWBaseclimbSignalShouldTerminate;
-
-
-/// A file was opened
-extern NSString *const JWApplicationSignalFileOpened;
-/// A file was closed
-extern NSString *const JWApplicationSignalFileClosed;
-/// A file failed (to close or open)
-extern NSString *const JWApplicationSignalFileFailed;
-/// A file operation aborted by user
-extern NSString *const JWApplicationSignalFileAborted;
-/// A sidebar window was opened
-extern NSString *const JWApplicationSignalWindowOpened;
-/// A sidebar window was closed
-extern NSString *const JWApplicationSignalWindowClosed;
-/// Assign the the baseclimb representation with content piece UUID
-extern NSString *const JWApplicationSignalContentPieceUUID;
-/// Respond should terminate
-extern NSString *const JWApplicationSignalShouldTerminate;
-
-
 
 
 void dispatch_async_main(dispatch_block_t block);

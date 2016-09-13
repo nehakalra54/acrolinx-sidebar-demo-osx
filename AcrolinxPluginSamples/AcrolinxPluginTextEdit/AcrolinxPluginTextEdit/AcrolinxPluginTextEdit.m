@@ -49,6 +49,13 @@ static TextEditApplication *textEditApplication;
 
 #pragma mark - AcrolinxPlugin overrides
 
+- (BOOL)shouldUnhideSidebar {
+    if ([NSApp isHidden] && [[[self class] frontmostFilePath] isEqualToString:[self ownFilePath]]) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 
 #pragma mark - AcrolinxPluginProtocol
 

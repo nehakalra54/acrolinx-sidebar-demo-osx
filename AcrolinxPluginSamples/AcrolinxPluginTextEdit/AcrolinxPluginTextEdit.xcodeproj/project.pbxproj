@@ -222,7 +222,7 @@
 				CONFIGURATION_BUILD_DIR = "~/Library/Application Support/PluginIns";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/persistent/Acrolinx/OSXSDK/AcrolinxPluginSDKForMac,
+					../../AcrolinxPluginSDKForMac,
 				);
 				INFOPLIST_FILE = AcrolinxPluginTextEdit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -239,7 +239,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/persistent/Acrolinx/OSXSDK/AcrolinxPluginSDKForMac,
+					../../AcrolinxPluginSDKForMac,
 				);
 				INFOPLIST_FILE = AcrolinxPluginTextEdit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
