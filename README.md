@@ -17,7 +17,7 @@ The sample shows how to use `AcrolinxPlugin.framework` for creating an acrolinx 
 
 To build and run the sample you need the following:
 
-* Acrolinx application (min version 1.5.0)
+* Acrolinx application (min version 1.4.0.613)
 * Test server credentials
 * Client signature(explained in “Configuration for Sample Plugin” section)
 
