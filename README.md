@@ -46,6 +46,7 @@ Following are the steps to build and run the sample plugin.
 * When sidebar is loaded run a check.
 
 
+
 ## License
 
 Copyright 2015-2016 Acrolinx GmbH
