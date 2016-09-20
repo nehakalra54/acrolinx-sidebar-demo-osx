@@ -104,7 +104,10 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 *  For initialising sidebar the plugin should implement `AcrolinxSidebarDelegate` method `sidebarLoaded`.
 *  Typical implementation of `sidebarLoaded` looks like this:
   
-{  
+
+```
+ #pragma mark - AcrolinxSidebarDelegate
+ - (void)sidebarLoaded {
     
     NSMutableDictionary *sidebarOptions = [self createSidebarOptionsForPlugin];
     
@@ -112,8 +115,13 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
     [sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
     
     [[[self sidebarController] JSInterface] initializeSidebarWithOptions:sidebarOptions];
+}
+```    
 
 * The framework provides method to create the sidebar options needed for initialising the sidebar. The options include necessary version information and client signature etc. Plugin can add more options keys like "readOnlySuggestions" is needed.
+
+## Extraction and Lookup
+TBD
 
 ## License
 
