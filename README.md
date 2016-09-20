@@ -60,7 +60,60 @@ Following are the steps to build and run the sample plugin.
 
 ![Sidebar Login Screen](./Documents/SidebarAfterCheck.png)
 
+#Writing new Acrolinx Sidebar Plugin
 
+##Prerequisite
+
+For writing new Acrolinx plugin for a target application you need:
+
+* Acrolinx application (min version 1.4.0.613)
+* Test server credentials
+* Client signature
+* AcrolinxPlugin.framework.
+
+You should also know:
+
+* Target applications’s bundle identifier
+* Way to find list of open documents and identifying active document. Acrolinx application creates sidebar for particular document. The plugin should keep track of the document it is associated with.
+* Way to extract document content.
+* Way to highlight and replace text in given range.
+
+##Plugin Project Setup
+
+* Create an Xcode project of type Bundle.
+* Create new Cocoa class file. Set Principal Class in project info.plist to the given class name.
+* In project build setting add `AcrolinxPlugin.framework` location in Frame Search Path.
+* For Acrolinx application to identify and load the plugin the principal plugin class should be derived from the class `AcrolinxPlugin`. It should also implement protocols `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
+
+##Plugin Identification
+
+* When Acrolinx application is launched it loads all supported plugins from location “~/Library/Application Support/PluginIns”. 
+* Supported plugin would mean a plugin bundle whose principal
+class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
+
+##Sidebar Loading
+
+* Acrolix application continuously checks if it has a plugin for currently active application. 
+* It queries the appropriate plugin for `frontmostFilePath` of the documents open in target application. 
+* File extension of the frontmost file path also plays a role in enabling "Show Sidebar" menu. The extension should be part of `supportedExtensions` list of one of the loaded plugins. 
+* When user selects "Show Sidebar" Acrollinx does performs few steps includeing: 
+	* Creating appropriate plugin object
+	* Instanciating the `AcrolinxSidebarController` and set the plugin object its delegate.
+	* Calling `openFileAtPath` method, here plugin should save the file path for future reference to own file path.
+	* Calling `loadSidebarURL`. The plugin should pass the sidebar URL to the `sidebarController` for loading.
+*  For initialising sidebar the plugin should implement `AcrolinxSidebarDelegate` method `sidebarLoaded`.
+*  Typical implementation of `sidebarLoaded` looks like this:
+  
+{  
+    
+    NSMutableDictionary *sidebarOptions = [self createSidebarOptionsForPlugin];
+    
+    // parameter for readonly sidebar
+    [sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
+    
+    [[[self sidebarController] JSInterface] initializeSidebarWithOptions:sidebarOptions];
+
+* The framework provides method to create the sidebar options needed for initialising the sidebar. The options include necessary version information and client signature etc. Plugin can add more options keys like "readOnlySuggestions" is needed.
 
 ## License
 
