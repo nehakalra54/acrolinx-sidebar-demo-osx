@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>AcrolinxPlugin Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AcrolinxPlugin Framework </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Acrolinx GmbH</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/sidebarController">sidebarController</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/bundleIdentifier">+ bundleIdentifier</option>
+		
+		<option value="//api/name/pluginVersion">+ pluginVersion</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/closeSidebarWindow">- closeSidebarWindow</option>
+		
+		<option value="//api/name/createSidebarOptionsForPlugin">- createSidebarOptionsForPlugin</option>
+		
+		<option value="//api/name/fileClosed:">- fileClosed:</option>
+		
+		<option value="//api/name/neededSidebarVersionString">- neededSidebarVersionString</option>
+		
+		<option value="//api/name/openSidebarWindow">- openSidebarWindow</option>
+		
+		<option value="//api/name/putDownFileWatchDog">- putDownFileWatchDog</option>
+		
+		<option value="//api/name/shouldTerminate:">- shouldTerminate:</option>
+		
+		<option value="//api/name/shouldUnhideSidebar">- shouldUnhideSidebar</option>
+		
+		<option value="//api/name/sidebarWindowWillClose">- sidebarWindowWillClose</option>
+		
+		<option value="//api/name/sleepFileWatchDog">- sleepFileWatchDog</option>
+		
+		<option value="//api/name/wakeupFileWatchDog">- wakeupFileWatchDog</option>
+		
+		<option value="//api/name/willTerminate:">- willTerminate:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">AcrolinxPlugin Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>AcrolinxPlugin.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>AcrolinxPlugin is base class for all the AcrolinxPlugin&rsquo;s writtent for any target editors.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sidebarController" title="sidebarController"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sidebarController">&nbsp;&nbsp;sidebarController</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>AcrolinxSidebarController instance associated with the plugin.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) AcrolinxSidebarController *sidebarController</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pluginVersion" title="pluginVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pluginVersion">+&nbsp;pluginVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Returns the version of the installed plugin.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)pluginVersion</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A string representing the plugins version.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bundleIdentifier" title="bundleIdentifier"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bundleIdentifier">+&nbsp;bundleIdentifier</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Returns the bundle identifier of the installed plugin.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)bundleIdentifier</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A string representing the bundle identifier</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createSidebarOptionsForPlugin" title="createSidebarOptionsForPlugin"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createSidebarOptionsForPlugin">&ndash;&nbsp;createSidebarOptionsForPlugin</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Creates and returns sidebar options.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSMutableDictionary *)createSidebarOptionsForPlugin</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A string representing the bundle identifier</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method can be called from <a href="../Protocols/AcrolinxSidebarDelegate.html">AcrolinxSidebarDelegate</a> method sidebarLoaded to creates options needed
+for initialinsing the sidebar. Plugin can add more options as needed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/neededSidebarVersionString" title="neededSidebarVersionString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/neededSidebarVersionString">&ndash;&nbsp;neededSidebarVersionString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Get the sidebar version string needed for the plugin.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)neededSidebarVersionString</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method should not be overridden!
+     The implementation returns the version defined in the framework base class header.
+     This method is used by the baseclimb to get the version string from the framework version linked to the plugin.
+     If the baseclimb is linked against another version, this avoids interface incompatibility.
+    @return</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sleepFileWatchDog" title="sleepFileWatchDog"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sleepFileWatchDog">&ndash;&nbsp;sleepFileWatchDog</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Put the file watchdog to sleep.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sleepFileWatchDog</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>While the watchdog is asleep plugin wont get fileDidSave call.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/wakeupFileWatchDog" title="wakeupFileWatchDog"></a>
+	<h3 class="method-title"><code><a href="#//api/name/wakeupFileWatchDog">&ndash;&nbsp;wakeupFileWatchDog</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Wake-up the file watchdog.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)wakeupFileWatchDog</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>While the watchdog is awake plugin would get fileDidSave call whenever file associated to the plugin is saved.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/putDownFileWatchDog" title="putDownFileWatchDog"></a>
+	<h3 class="method-title"><code><a href="#//api/name/putDownFileWatchDog">&ndash;&nbsp;putDownFileWatchDog</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Stop the file watchdog.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)putDownFileWatchDog</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Call it if the file watchdog is no longer needed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/openSidebarWindow" title="openSidebarWindow"></a>
+	<h3 class="method-title"><code><a href="#//api/name/openSidebarWindow">&ndash;&nbsp;openSidebarWindow</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Open AcrolinxSidebarController window.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)openSidebarWindow</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called by acrolinx application.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/closeSidebarWindow" title="closeSidebarWindow"></a>
+	<h3 class="method-title"><code><a href="#//api/name/closeSidebarWindow">&ndash;&nbsp;closeSidebarWindow</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Close AcrolinxSidebarController window.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)closeSidebarWindow</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called by acrolinx application.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sidebarWindowWillClose" title="sidebarWindowWillClose"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sidebarWindowWillClose">&ndash;&nbsp;sidebarWindowWillClose</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Called before closing AcrolinxSidebarController window.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sidebarWindowWillClose</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Override if special handling is need by the plugin.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldTerminate:" title="shouldTerminate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldTerminate:">&ndash;&nbsp;shouldTerminate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Called before terminating the sidebar.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)shouldTerminate:(id)<em>sender</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE/FALSE</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@param sender</p><p>Override this method to control the sidebar termination if needed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/willTerminate:" title="willTerminate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/willTerminate:">&ndash;&nbsp;willTerminate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Called before terminating the sidebar.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)willTerminate:(id)<em>sender</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE/FALSE</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@param sender</p><p>Override this method to perform any clean-up needed before unloading the plugin.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldUnhideSidebar" title="shouldUnhideSidebar"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldUnhideSidebar">&ndash;&nbsp;shouldUnhideSidebar</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Called to query if the sidebar window can be shown.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)shouldUnhideSidebar</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE/FALSE</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method must be overridden to handle hiding/unhiding of sidebar window while user switches between windows.
+e.g. If the target application becomes active and front most document is associated with the plugin then sidebar window
+must be shown.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fileClosed:" title="fileClosed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fileClosed:">&ndash;&nbsp;fileClosed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Tell application when a file is closed.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fileClosed:(NSString *)<em>filePath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>A string representing the file to close.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This methos should be called to tell Acrolinx Application when a file associated with plugin is closed
+This would trigger the process of unloading the plugin.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxPlugin.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Acrolinx GmbH. All rights reserved. Updated: 2016-10-07</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

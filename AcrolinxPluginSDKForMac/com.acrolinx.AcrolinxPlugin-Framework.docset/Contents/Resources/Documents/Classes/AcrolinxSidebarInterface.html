@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>AcrolinxSidebarInterface Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AcrolinxPlugin Framework </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Acrolinx GmbH</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/interfaceWithScriptObject:forInstanceName:">+ interfaceWithScriptObject:forInstanceName:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/cancelCheck">- cancelCheck</option>
+		
+		<option value="//api/name/initWithWithScriptObject:forInstanceName:">- initWithWithScriptObject:forInstanceName:</option>
+		
+		<option value="//api/name/initializeSidebarWithOptions:">- initializeSidebarWithOptions:</option>
+		
+		<option value="//api/name/performGlobalCheck:">- performGlobalCheck:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">AcrolinxSidebarInterface Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>AcrolinxSidebarInterface.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>AcrolinxSidebarInterface handles communication between the sidebar and the plugin. This class is instanciated and managed by AcrolinxSidebarController.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/interfaceWithScriptObject:forInstanceName:" title="interfaceWithScriptObject:forInstanceName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/interfaceWithScriptObject:forInstanceName:">+&nbsp;interfaceWithScriptObject:forInstanceName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Creates a new JS interface instance with a given script object.
+</code></pre>
+
+<p>Usally this will be the &ldquo;window&rdquo; object.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)interfaceWithScriptObject:(WebScriptObject *)<em>scriptObject</em> forInstanceName:(NSString *)<em>instanceName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scriptObject</code></th>
+						<td><p>An instance of WebScriptObject that will be interfaced.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>instanceName</code></th>
+						<td><p>The variable name of the interface in the scriptObject.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A JavaScript interface to the scriptObject parameter.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxSidebarInterface.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithWithScriptObject:forInstanceName:" title="initWithWithScriptObject:forInstanceName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithWithScriptObject:forInstanceName:">&ndash;&nbsp;initWithWithScriptObject:forInstanceName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Initiates a JS interface instance with a given script object.
+</code></pre>
+
+<p>Usally this will be the &ldquo;window&rdquo; object.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithWithScriptObject:(WebScriptObject *)<em>scriptObject</em> forInstanceName:(NSString *)<em>instanceName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scriptObject</code></th>
+						<td><p>An instance of WebScriptObject that will be interfaced.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>instanceName</code></th>
+						<td><p>The variable name of the interface in the scriptObject.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A JavaScript interface to the scriptObject parameter.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxSidebarInterface.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initializeSidebarWithOptions:" title="initializeSidebarWithOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initializeSidebarWithOptions:">&ndash;&nbsp;initializeSidebarWithOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Initializes the sidebar JS with a given configuration.
+</code></pre>
+
+<p>This is usally the documentDownloadInfo passed by the baseclimb.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initializeSidebarWithOptions:(NSDictionary *)<em>sidebarOptions</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sidebarOptions</code></th>
+						<td><p>NSDictionary with init options for the sidebar.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Any object returned by the JS application. Might be nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxSidebarInterface.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/performGlobalCheck:" title="performGlobalCheck:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/performGlobalCheck:">&ndash;&nbsp;performGlobalCheck:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Tells the JavaScript sidebar object to perform a global document check.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)performGlobalCheck:(NSString *)<em>checkString</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>checkString</code></th>
+						<td><p>NSString with contents of document.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxSidebarInterface.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cancelCheck" title="cancelCheck"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cancelCheck">&ndash;&nbsp;cancelCheck</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<pre><code>Tells the JavaScript sidebar object to cancel document check.
+</code></pre>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)cancelCheck</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">AcrolinxSidebarInterface.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Acrolinx GmbH. All rights reserved. Updated: 2016-10-07</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

@@ -121,7 +121,25 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 * The framework provides method to create the sidebar options needed for initialising the sidebar. The options include necessary version information and client signature etc. Plugin can add more options keys like "readOnlySuggestions" is needed.
 
 ## Extraction and Lookup
-TBD
+
+###Extraction 
+
+* When user presses "Check" button in the sidebar the `AcrolinxSidebarInterface` gets a request to initiate check. 
+* The plugin's principal class must implement `AcrolinxPluginProtocol` method `startGlobalCheck`. 
+* Here plugin is expected to extract the content of associated file and handover the extaccted content to the  `AcrolinxSidebarInterface` instance. 
+```
+[[[self sidebarController] JSInterface] performGlobalCheck:stringExtractedFromEditor];
+``` 
+* Plugin may build a lookup data here. 
+
+###Lookup
+
+* Plugin's principal class should implement `AcrolinxSidebarDelegate` methods `sidebarDidSelectWithMatches` and `sidebarDidReplaceWithReplacements`.
+* When user selects cards in sidebar for highlighting or replacement these methods are called accordingly. 
+* Parameters holds array of dictionaries which hold content, range and replacements. 
+* The offsets correspond to the cotent sent to the server. 
+* The plugin should map these ranges to actual ranges in the document and interact with editor to perform highlight or replacement operation.
+
 
 ## License
 
