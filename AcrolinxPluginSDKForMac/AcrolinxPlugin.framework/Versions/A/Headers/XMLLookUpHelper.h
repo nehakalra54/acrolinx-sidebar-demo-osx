@@ -19,9 +19,5 @@
 
 - (instancetype)initWithXMLString:(NSString *)XMLString;
 
-//- (NSRegularExpression *)regExForMatchingString:(NSString *)matchString;
-//- (NSUInteger)countOfMatchOfExp:(NSRegularExpression *)regExp inTextRange:(NSRange)range inMatchingStore:(NSString *)matchingStore;
-//- (NSString *)createLookupRegExForMatches:(NSArray *)matches andBookMarkRangeInXML:(NSRange)bookmarkRangeInXML;
-
 - (NSRange)rangeForMatches:(NSArray *)matches inPlainTextContent:(NSString *)plainText forBookMarkRangeInXML:(NSRange)bookmarkRangeInXML;
 @end

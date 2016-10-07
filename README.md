@@ -50,7 +50,7 @@ Following are the steps to build and run the sample plugin.
 
 ![Show Sidebar Menu](./Documents/AcrolinxMenu.png)
 
-* It would open a sidebar. Provide server credentials to login. 
+* It would open a sidebar. Provide server credentials to log in. 
 
 ![Sidebar Login Screen](./Documents/SidebarLogin.png)
 
@@ -93,15 +93,15 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 
 ##Sidebar Loading
 
-* Acrolix application continuously checks if it has a plugin for currently active application. 
+* Acrolinx application continuously checks if it has a plugin for currently active application. 
 * It queries the appropriate plugin for `frontmostFilePath` of the documents open in target application. 
 * File extension of the frontmost file path also plays a role in enabling "Show Sidebar" menu. The extension should be part of `supportedExtensions` list of one of the loaded plugins. 
-* When user selects "Show Sidebar" Acrollinx does performs few steps includeing: 
+* When user selects "Show Sidebar" Acrolinx does performs few steps including: 
 	* Creating appropriate plugin object
-	* Instanciating the `AcrolinxSidebarController` and set the plugin object its delegate.
+	* Instantiating the `AcrolinxSidebarController` and set the plugin object its delegate.
 	* Calling `openFileAtPath` method, here plugin should save the file path for future reference to own file path.
 	* Calling `loadSidebarURL`. The plugin should pass the sidebar URL to the `sidebarController` for loading.
-*  For initialising sidebar the plugin should implement `AcrolinxSidebarDelegate` method `sidebarLoaded`.
+*  For initializing sidebar the plugin should implement `AcrolinxSidebarDelegate` method `sidebarLoaded`.
 *  Typical implementation of `sidebarLoaded` looks like this:
   
 
@@ -111,14 +111,14 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
     
     NSMutableDictionary *sidebarOptions = [self createSidebarOptionsForPlugin];
     
-    // parameter for readonly sidebar
+    // parameter for read-only sidebar
     [sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
     
     [[[self sidebarController] JSInterface] initializeSidebarWithOptions:sidebarOptions];
 }
 ```    
 
-* The framework provides method to create the sidebar options needed for initialising the sidebar. The options include necessary version information and client signature etc. Plugin can add more options keys like "readOnlySuggestions" is needed.
+* The framework provides method to create the sidebar options needed for initializing the sidebar. The options include necessary version information and client signature etc. Plugin can add more options keys like "readOnlySuggestions" is needed.
 
 ## Extraction and Lookup
 
@@ -126,7 +126,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 
 * When user presses "Check" button in the sidebar the `AcrolinxSidebarInterface` gets a request to initiate check. 
 * The plugin's principal class must implement `AcrolinxPluginProtocol` method `startGlobalCheck`. 
-* Here plugin is expected to extract the content of associated file and handover the extaccted content to the  `AcrolinxSidebarInterface` instance. 
+* Here plugin is expected to extract the content of associated file and handover the extracted content to the  `AcrolinxSidebarInterface` instance. 
 ```
 [[[self sidebarController] JSInterface] performGlobalCheck:stringExtractedFromEditor];
 ``` 
@@ -136,7 +136,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 
 * Plugin's principal class should implement `AcrolinxSidebarDelegate` methods `sidebarDidSelectWithMatches` and `sidebarDidReplaceWithReplacements`.
 * When user selects cards in sidebar for highlighting or replacement these methods are called accordingly. 
-* Parameters holds array of dictionaries which hold content, range and replacements. 
+* Parameter is an array of dictionaries which hold content, range and replacements. 
 * The offsets correspond to the cotent sent to the server. 
 * The plugin should map these ranges to actual ranges in the document and interact with editor to perform highlight or replacement operation.
 

@@ -45,46 +45,152 @@ FOUNDATION_EXPORT const unsigned char AcrolinxPluginVersionString[];
 void dispatch_async_main(dispatch_block_t block);
 void dispatch_sync_main(dispatch_block_t block);
 
+/** 
+ * AcrolinxPlugin is base class for all the AcrolinxPlugin’s written for any target editors.
+ *
+ */
 @interface AcrolinxPlugin : NSObject
 
+/**
+ AcrolinxSidebarController instance associated with the plugin.
+ */
+
 @property (nonatomic, retain) AcrolinxSidebarController *sidebarController;
+
 @property (nonatomic, retain, readonly) NSUserDefaults *acrolinxUserDefaults;
 @property (nonatomic, retain, readonly) NSString *currentCheckID;
 
+
 + (instancetype)sharedPlugin;
 
-//Utility methods for different versions info
+
+/**
+ *	Returns the version of the installed plugin.
+ *	@return A string representing the plugins version.
+ */
 + (NSString *)pluginVersion;
+
+/**
+ *	Returns the bundle identifier of the installed plugin.
+ *	@return A string representing the bundle identifier
+ */
 + (NSString *)bundleIdentifier;
 
+/**
+ *	Creates and returns sidebar options.
+ *
+ *  @discussion This method can be called from AcrolinxSidebarDelegate method 'sidebarLoaded' to creates options needed
+ *  for initialising the sidebar. Plugin can add more options as needed.
+ *
+ *	@return A string representing the bundle identifier
+ */
 - (NSMutableDictionary *)createSidebarOptionsForPlugin;
 
 
 /**
- *	@author Julian Weinert
  *
  *	Get the sidebar version string needed for the plugin.
  *	
- *	@discussion This method should not be overritten!
+ *	@discussion This method should not be overridden!
  *	 The implementation returns the version defined in the framework base class header.
- *	 This method is used by the baseclimb to get the version string from the framework version linked to the plugin.
+ *	 This method is used by the Acrolinx Application to get the version string from the framework version linked to the plugin.
  *	 If the baseclimb is linked against another version, this avoids interface incompatibility.
- *	@return
+ *
+ *	@return The sidebar version string
  */
 - (NSString *)neededSidebarVersionString;
 
+
+/**
+ *	File watchdog methods.
+ *
+ *	@discussion When a plugin is created for a file open in target editor, Acrolinx creates a file watchdog. 
+ *  The watchdog would call AcrolinxPluginProtocol method fileDidSave if the plugin respondds to this selector.
+ */
+
+
+/**
+ *	Put the file watchdog to sleep.
+ *
+ *	@discussion While the watchdog is asleep plugin won't receive fileDidSave call.
+ */
 - (void)sleepFileWatchDog;
+
+/**
+ *	Wake up the file watchdog.
+ *
+ *	@discussion While the watchdog is awake plugin would receive fileDidSave call whenever file associated to the plugin is saved.
+ */
 - (void)wakeupFileWatchDog;
+
+/**
+ *	Stop the file watchdog.
+ *
+ *	@discussion Call it if the file watchdog is no longer needed.
+ */
 - (void)putDownFileWatchDog;
 
+/**
+ *	Open AcrolinxSidebarController window.
+ *
+ *	@discussion Called by acrolinx application.
+ */
 - (void)openSidebarWindow;
+
+/**
+ *	Close AcrolinxSidebarController window.
+ *
+ *	@discussion Called by acrolinx application.
+ */
 - (void)closeSidebarWindow;
+
+
+/**
+ *	Called before closing AcrolinxSidebarController window.
+ *
+ *	@discussion Override if special handling is need by the plugin.
+ */
 - (void)sidebarWindowWillClose;
+
+/**
+ *	Called before terminating the sidebar.
+ *
+ *	@discussion Override this method to control the sidebar termination if needed.
+ *  @param sender The message sender.
+ *
+ *  @return TRUE/FALSE
+ */
 - (BOOL)shouldTerminate:(id)sender;
+
+/**
+ *	Called before terminating the sidebar.
+ *
+ *  @param sender The message sender.
+ *	@discussion Override this method to perform any clean-up needed before unloading the plugin.
+ *
+ *  @return TRUE/FALSE
+ */
 - (void)willTerminate:(id)sender;
 
+/**
+ *	Called to query if the sidebar window can be shown.
+ *
+ *	@discussion This method must be overridden to handle hiding/unhiding of sidebar window while user switches between windows.
+ *  e.g. If the target application becomes active and front most document is associated with the plugin then sidebar window 
+ *  must be shown.
+ *
+ *  @return TRUE/FALSE
+ */
 - (BOOL)shouldUnhideSidebar;
 
+/**
+ *	Tell application when a file is closed.
+ *
+ *  @param filePath A string representing the file to close.
+ *
+ *	@discussion This method should be called to tell Acrolinx Application when a file associated with plugin is closed.
+ *  This would trigger the process of unloading the plugin.
+ */
 - (void)fileClosed:(NSString *)filePath;
 
 - (NSString *)tempDir;

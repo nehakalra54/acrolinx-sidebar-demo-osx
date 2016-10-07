@@ -14,6 +14,9 @@
 
 @protocol AcrolinxSidebarDelegate;
 
+/**
+ AcrolinxSidebarInterface handles communication between the sidebar and the plugin. This class is instantiated and managed by AcrolinxSidebarController.
+ */
 @interface AcrolinxSidebarInterface : NSObject
 
 @property (nonatomic, assign) id<AcrolinxPluginProtocol, AcrolinxSidebarDelegate>JSDelegate;
@@ -22,10 +25,9 @@
 @property (assign) BOOL shouldCheckOnSidebarLoaded;
 
 /**
- *	@author Julian Weinert
  *
  *	Creates a new JS interface instance with a given script object.
- *   Usally this will be the "window" object.
+ *   Usually this will be the "window" object.
  *
  *	@param scriptObject An instance of WebScriptObject that will be interfaced.
  *  @param instanceName The variable name of the interface in the scriptObject.
@@ -34,10 +36,9 @@
 + (instancetype)interfaceWithScriptObject:(WebScriptObject *)scriptObject forInstanceName:(NSString *)instanceName;
 
 /**
- *	@author Julian Weinert
  *
  *	Initiates a JS interface instance with a given script object.
- *   Usally this will be the "window" object.
+ *   Usually this will be the "window" object.
  *
  *	@param scriptObject An instance of WebScriptObject that will be interfaced.
  *  @param instanceName The variable name of the interface in the scriptObject.
@@ -46,10 +47,8 @@
 - (instancetype)initWithWithScriptObject:(WebScriptObject *)scriptObject forInstanceName:(NSString *)instanceName;
 
 /**
- *	@author Julian Weinert
  *
  *	Initializes the sidebar JS with a given configuration.
- *   This is usally the documentDownloadInfo passed by the baseclimb.
  *
  *	@param sidebarOptions NSDictionary with init options for the sidebar.
  *  @return Any object returned by the JS application. Might be nil.
@@ -57,7 +56,6 @@
 - (id)initializeSidebarWithOptions:(NSDictionary *)sidebarOptions;
 
 /**
- *	@author Julian Weinert
  *
  *	Tells the JavaScript sidebar object to perform a global document check.
  *	
@@ -66,7 +64,6 @@
 - (void)performGlobalCheck:(NSString *)checkString;
 
 /**
- *	@author Puneet Sanchiher
  *
  *	Tells the JavaScript sidebar object to cancel document check.
  *
@@ -76,24 +73,21 @@
 @end
 
 /**
- *	@author Julian Weinert
  *
- *	A protocol used to communicate between the sidebars JS and the baseclimb plugin.
+ *	A protocol used to communicate between the sidebars JS and the Acrolinx plugin.
  *
- *  @discussion This protocol contains methods for highlighting and replacing issues is the document.
- *   It's also needed to get the documents contents for checking and downloading attachments.
+ *  @discussion This protocol contains methods for highlighting and replacing issues in the document.
+ *   It is also needed to get the documents contents for checking and downloading attachments.
  */
 @protocol AcrolinxSidebarDelegate <NSObject>
 
 /**
- *	@author Julian Weinert
  *
  *	Called when the sidebar JS is ready to run.
  */
 - (void)sidebarLoaded;
 
 /**
- *	@author Julian Weinert
  *
  *	Called when the sidebar finds a new match in the checked document string.
  *
@@ -103,7 +97,6 @@
 - (id)sidebarDidFindNewMatch:(id)match;
 
 /**
- *	@author Julian Weinert
  *
  *	Called when the sidebar selects an issue.
  *
@@ -113,9 +106,8 @@
 - (void)sidebarDidSelectWithMatches:(NSArray *)matches;
 
 /**
- *	@author Julian Weinert
  *
- *	Called when the sidebar replaces an issues.
+ *	Called when the sidebar replaces an issue.
  *
  *	@param replacements An array of dictionaries representing a replacement.
  *	@return <unknown>
@@ -125,7 +117,6 @@
 
 
 /**
- *	@author Julian Weinert
  *
  *	Returns an input format string like "TEXT", "XML", etc.
  *	 Tells the server if and how to extract received content.
@@ -138,7 +129,6 @@
 - (NSString *)formatOfDocument;
 
 /**
- *	@author Julian Weinert
  *
  *	Returns the plugins current file path.
  *
