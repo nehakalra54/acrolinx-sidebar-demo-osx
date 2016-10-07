@@ -140,6 +140,9 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 * The offsets correspond to the cotent sent to the server. 
 * The plugin should map these ranges to actual ranges in the document and interact with editor to perform highlight or replacement operation.
 
+##Framework Reference
+[Acrolinx Plugin Framework](./AcrolinxPluginSDKForMac/com.acrolinx.AcrolinxPlugin-Framework.docset/Contents/Resources/Documents/index.html)
+
 
 ## License
 
