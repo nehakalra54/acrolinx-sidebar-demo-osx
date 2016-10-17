@@ -41,24 +41,24 @@ Following are the steps to build and run the sample plugin.
 * Run Acrolinx application. 
 * In preferences give valid Acrolinx server URL.
 
-![Empty Preference Screen](./Documents/PreferenceEmpty.png)
+![Empty Preference Screen](./doc/PreferenceEmpty.png)
 
-![Preference Screen](./Documents/PreferenceWithValidServer.png)
+![Preference Screen](./doc/PreferenceWithValidServer.png)
 
 * Open a TextEdit document, new documents must be saved once for the Acrolinx Plugin to identify it. 
 * While TextEdit is the active application go to Acrolinx menu and select “Show Sidebar”. "Show Sidebar" menu is enabled only if the file extension is .txt or .rtf
 
-![Show Sidebar Menu](./Documents/AcrolinxMenu.png)
+![Show Sidebar Menu](./doc/AcrolinxMenu.png)
 
 * It would open a sidebar. Provide server credentials to log in. 
 
-![Sidebar Login Screen](./Documents/SidebarLogin.png)
+![Sidebar Login Screen](./doc/SidebarLogin.png)
 
-![Sidebar Login Screen](./Documents/SidebarLoaded.png)
+![Sidebar Login Screen](./doc/SidebarLoaded.png)
 
 * When sidebar is loaded run a check.
 
-![Sidebar Login Screen](./Documents/SidebarAfterCheck.png)
+![Sidebar Login Screen](./doc/SidebarAfterCheck.png)
 
 #Writing new Acrolinx Sidebar Plugin
 
