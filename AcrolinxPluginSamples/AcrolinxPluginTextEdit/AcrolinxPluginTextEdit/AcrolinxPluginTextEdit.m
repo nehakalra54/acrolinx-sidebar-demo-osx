@@ -2,17 +2,38 @@
 //  AcrolinxPluginTextEdit.m
 //  AcrolinxPluginTextEdit
 //
-//  Created by Persistent on 22/08/16.
+//  Created by Puneet Sanchiher on 22/08/16.
 //  Copyright (c) 2016 Acrolinx GmbH. All rights reserved.
 //
 
 #import "AcrolinxPluginTextEdit.h"
 #import "TextEdit.h"
 
+NSString *const kHighlightTextScriptFormat = @"\
+tell application \"TextEdit\" \n\
+    activate \n\
+    set color of front document to {0, 0, 0} \n\
+    set color of characters %lu thru %lu of text of front document to {51834, 8835, 2732} \n\
+end tell";
+
+NSString *const kReplaceTextScriptFormat = @"\
+tell application \"TextEdit\" \n\
+    set startIndex to %lu + 1\n\
+    set endIndex to %lu + 1 \n\
+    set replacement to \"%@\" \n\
+    activate \n\
+    repeat with k from endIndex to startIndex + 1  by -1 \n\
+        delete character k of text of front document \n\
+    end repeat \n\
+    set character startIndex of text of front document to replacement \n\
+    set color of front document to {0, 0, 0} \n\
+end tell";
+
 @interface AcrolinxPluginTextEdit () <AcrolinxPluginProtocol, AcrolinxSidebarDelegate>
 
 @property (nonatomic, retain) NSString *ownFilePath;
 @property (nonatomic, retain) AcrolinxPollingProxy *activeDocumentPollingProxy;
+@property (nonatomic, retain) IndexStore *indexStore;
 
 @end
 
@@ -35,6 +56,16 @@ static TextEditApplication *textEditApplication;
     }
     return textEditApplication;
 }
+
+- (IndexStore *)indexStore {
+    @synchronized (self) {
+        if (!_indexStore) {
+            _indexStore = [IndexStore indexStore];
+        }
+        return _indexStore;
+    }
+}
+
 
 #pragma mark internal implementation
 
@@ -159,21 +190,18 @@ static TextEditApplication *textEditApplication;
 
 - (void)startGlobalCheck {
     dispatch_async_main(^{
-        NSError *error;
-        NSString *fileContents = [NSString stringWithContentsOfFile:[self ownFilePath] encoding:NSUTF8StringEncoding error:&error];
+        NSString *fileContents = [[[[[self textEditApplication] documents] objectAtIndex:0] properties] valueForKey:@"text"];
         
-        if (error) {
-            NSLog(@"Error reading file: %@", error.localizedDescription);
-            return;
-        }
-
+        // Reset index store for every check
+        _indexStore = nil;
+        
         [[[self sidebarController] JSInterface] performGlobalCheck:fileContents];
     });
 
 }
 
 - (void)fileDidSave {
-    //If you want any acion on file save
+    //If you want any action on file save
 }
 
 #pragma mark - AcrolinxSidebarDelegate
@@ -181,8 +209,8 @@ static TextEditApplication *textEditApplication;
     
     NSMutableDictionary *sidebarOptions = [self createSidebarOptionsForPlugin];
     
-    // parameter for readonly sidebar
-    [sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
+    // Parameter to make the sidebar readonly.
+    //[sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
     
     [[[self sidebarController] JSInterface] initializeSidebarWithOptions:sidebarOptions];
 }
@@ -192,12 +220,70 @@ static TextEditApplication *textEditApplication;
 }
 
 - (void)sidebarDidSelectWithMatches:(NSArray *)matches {
-    LLog(@"It's a read only side bar");
+    
+    /**
+     * Here a plug-in typically tries to map the ranges represented by 'matches' into actual content. 
+     * Then using selection API exposed by the editor it highlights appropriate ranges.
+     *
+     * Since TextEdit doesn't provide any such API, following code uses a script which changes the color of the relevant text range.
+     *
+     * This code assumes that there has not been any manual edits in the text after the check was run. Use of IndexStore makes sure 
+     * that text offset changes due to any replacements done through sidebarDidReplaceWithReplacements are accounted for.
+     *
+     */
+    
+    NSUInteger unshiftedStartOfRange = [[[[matches firstObject] objectForKey:@"range"] firstObject] unsignedIntegerValue];
+    NSUInteger unshiftedEndOfRange = [[[[matches lastObject] objectForKey:@"range"] lastObject] unsignedIntegerValue];
+    
+    NSUInteger startOfRange = [[self indexStore] shiftedIndex:unshiftedStartOfRange];
+    NSUInteger endOfRange = startOfRange + (unshiftedEndOfRange - unshiftedStartOfRange);
+    
+    NSString *highlightTextScript = [NSString stringWithFormat:kHighlightTextScriptFormat, (unsigned long)startOfRange, (unsigned long)endOfRange];
+    
+    NSDictionary *errorDict;
+    NSAppleScript *script = [[NSAppleScript alloc] initWithSource:highlightTextScript];
+    NSAppleEventDescriptor *theResult = [script executeAndReturnError:&errorDict];
+    if (!theResult) {
+        LLog(@"Script to highlight text returned error: %@", [errorDict valueForKey:@"NSAppleScriptErrorBriefMessage"]);
+        return ;
+    }
+    
+    [[self textEditApplication] activate];
     return;
 }
 
 - (id)sidebarDidReplaceWithReplacements:(NSArray *)replacements {
-    LLog(@"It's a read only side bar");
+    
+    /*
+    * This code assumes that there has not been any manual edits in the text after the check was run. Use of IndexStore makes sure that
+    * text offset changes due to any replacements done through sidebarDidReplaceWithReplacements are accounted for.
+    */
+
+    for (NSDictionary *replacement in replacements) {
+        LLog(@"rplcmnt: %@", replacement);
+        
+        NSUInteger unshiftedStartOfRange = [[[replacement objectForKey:@"range"] firstObject] unsignedIntegerValue];
+        NSUInteger unshiftedEndOfRange = [[[replacement objectForKey:@"range"] lastObject] unsignedIntegerValue];
+        
+        NSUInteger startOfRange = [[self indexStore] shiftedIndex:unshiftedStartOfRange];
+        NSUInteger endOfRange = startOfRange + (unshiftedEndOfRange - unshiftedStartOfRange) -1;
+        NSString *replacementString = [replacement objectForKey:@"replacement"];
+        
+        NSString *replaceTextScript = [NSString stringWithFormat:kReplaceTextScriptFormat,
+                                         (unsigned long)startOfRange, (unsigned long)endOfRange, replacementString];
+        
+        NSDictionary *errorDict;
+        NSAppleScript *script = [[NSAppleScript alloc] initWithSource:replaceTextScript];
+        NSAppleEventDescriptor *theResult = [script executeAndReturnError:&errorDict];
+        if (!theResult) {
+            LLog(@"Script to replace text returned error: %@", [errorDict valueForKey:@"NSAppleScriptErrorBriefMessage"]);
+            return nil;
+        }
+        
+        [[self indexStore] addShiftingIndex:unshiftedStartOfRange withShiftingWidth:([replacementString length] - (endOfRange - startOfRange + 1))];
+
+    }
+
     return replacements;
 }
 

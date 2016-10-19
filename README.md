@@ -1,11 +1,12 @@
 #Acrolinx OS X Sidebar Demo  
+Demo code for an integration of the Acrolinx sidebar for a Mac OS X Application.
 
 ##Acrolinx Plugin Framework 
 
 
 Acrolinx for Mac application can be used to check content of document open in an editor like Microsoft Word for Mac. For Acrolinx to be able to check it requires an Acrolinx Plugin written for particular target application. 
 
-`AcrolinxPlugin.framework` helps develop Acrolinx plugin for different target applications. 
+`AcrolinxPlugin.framework` helps develop Acrolinx plugin for different target applications. The framework is available with this sample code in folder `AcrolinxPluginSDKForMac`
 
 ##Sample - Acrolinx Plugin for TextEdit
 
@@ -14,21 +15,21 @@ The sample shows how to use `AcrolinxPlugin.framework` for creating an acrolinx 
 
 ##Prerequisite
 
+Please contact Acrolinx SDK support (sdk-support@acrolinx.com) for consulting and getting your integration certified. This sample works with a test license on an internal acrolinx server. This license is only meant for demonstration and developing purposes. Once you finished your integration you'll have to get a license for your integration from Acrolinx.
 
 To build and run the sample you need the following:
 
 * Acrolinx application (min version 1.4.0.613)
 * Test server credentials
-* Client signature(explained in “Configuration for Sample Plugin” section)
 
 For writing new plugin you also need:
 
-* AcrolinxPlugin.framework.
+* AcrolinxPlugin.framework. 
 
 
 ##Configuration for Sample Plugin
 
-The Acrolinx Server checks if a connecting client is allowed to connect. To enable this you must provide a valid client signature. First obtain a client signature from Acrolinx. To enter new client signature in the code open `AcrolinxPluginTextEdit.xcodeproject`. Navigate to `AcrolinxPluginTextEdit.m`,  Find method `clientSignature` and edit the value to return the client signature you obtained from Acrolinx. 
+The Acrolinx Server checks if a connecting client is allowed to connect. To enable this the sample code includes a valid client signature. To enter new client signature in the code open `AcrolinxPluginTextEdit.xcodeproject`. Navigate to `AcrolinxPluginTextEdit.m`,  Find method `clientSignature` and edit the value to return the client signature you obtained from Acrolinx. 
 
 
 ##Build and Run Sample Plugin
@@ -37,7 +38,7 @@ The Acrolinx Server checks if a connecting client is allowed to connect. To enab
 Following are the steps to build and run the sample plugin. 
 
 * Open AcrolinxPluginTextEdit.xcodeproject and build the project in Xcode.
-* Put the output file AcrolinxPluginTextEdit.acpl to user’s PlugIns folder `(“~/Users/persistent/Library/Application Support/PluginIns”)`
+* Put the output file AcrolinxPluginTextEdit.acpl to user’s PlugIns folder `(“~/Library/Application Support/PluginIns”)`
 * Run Acrolinx application. 
 * In preferences give valid Acrolinx server URL.
 
@@ -46,6 +47,7 @@ Following are the steps to build and run the sample plugin.
 ![Preference Screen](./doc/PreferenceWithValidServer.png)
 
 * Open a TextEdit document, new documents must be saved once for the Acrolinx Plugin to identify it. 
+* Optionally you can open the sample document topspin.txt. It can be found in "acrolinx-sidebar-demo-osx/doc" folder. 
 * While TextEdit is the active application go to Acrolinx menu and select “Show Sidebar”. "Show Sidebar" menu is enabled only if the file extension is .txt or .rtf
 
 ![Show Sidebar Menu](./doc/AcrolinxMenu.png)
@@ -54,26 +56,33 @@ Following are the steps to build and run the sample plugin.
 
 ![Sidebar Login Screen](./doc/SidebarLogin.png)
 
-![Sidebar Login Screen](./doc/SidebarLoaded.png)
+![Sidebar after login](./doc/SidebarLoaded.png)
 
 * When sidebar is loaded run a check.
 
-![Sidebar Login Screen](./doc/SidebarAfterCheck.png)
+![Sidebar after check](./doc/SidebarAfterCheck.png)
+
+* Clicking a card in sidebar highlights corresponding text in the document. 
+![Highlight](./doc/Highlight.png)
+
+* Clicking on the suggestion replaces the text in document. 
+
+Note if the document has been changed manually then the check must be run again for highlight and replace to work properly. 
 
 #Writing new Acrolinx Sidebar Plugin
 
 ##Prerequisite
 
-For writing new Acrolinx plugin for a target application you need:
+For writing Acrolinx plugin for  an application you need:
 
 * Acrolinx application (min version 1.4.0.613)
 * Test server credentials
 * Client signature
-* AcrolinxPlugin.framework.
+* AcrolinxPlugin.framework. The framework is available with this sample code in folder `AcrolinxPluginSDKForMac`.
 
 You should also know:
 
-* Target applications’s bundle identifier
+* The bundle identifier of the application for which Acrolinx Plugin is to be written. Bundle identifier can be found in the info.plist file inside the application's bundle.
 * Way to find list of open documents and identifying active document. Acrolinx application creates sidebar for particular document. The plugin should keep track of the document it is associated with.
 * Way to extract document content.
 * Way to highlight and replace text in given range.
@@ -111,8 +120,8 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
     
     NSMutableDictionary *sidebarOptions = [self createSidebarOptionsForPlugin];
     
-    // parameter for read-only sidebar
-    [sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
+    // Parameter to make the sidebar readonly.
+    //[sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
     
     [[[self sidebarController] JSInterface] initializeSidebarWithOptions:sidebarOptions];
 }
@@ -130,7 +139,6 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 ```
 [[[self sidebarController] JSInterface] performGlobalCheck:stringExtractedFromEditor];
 ``` 
-* Plugin may build a lookup data here. 
 
 ###Lookup
 
@@ -141,7 +149,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 * The plugin should map these ranges to actual ranges in the document and interact with editor to perform highlight or replacement operation.
 
 ##Framework Reference
-Refer AcrolinxPluginSDKForMac/com.acrolinx.AcrolinxPlugin-Framework.docset for the class reference.
+Refer doc/com.acrolinx.AcrolinxPlugin-Framework.docset for the class reference.
 
 
 ## License

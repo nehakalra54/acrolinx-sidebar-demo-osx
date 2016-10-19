@@ -2,7 +2,7 @@
 //  AcrolinxPluginTextEdit.h
 //  AcrolinxPluginTextEdit
 //
-//  Created by Persistent on 22/08/16.
+//  Created by Puneet Sanchiher on 22/08/16.
 //  Copyright (c) 2016 Acrolinx GmbH. All rights reserved.
 //
 
