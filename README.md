@@ -2,7 +2,7 @@
 
 ##Introduction
 
-Demo code is to showcase [Acrolinx](http://www.acrolinx.com/) sidebar integration for a Mac OS X Application. To understand the demo code an introduction to Acrolinx Sidebar, Acrolinx Application for Mac and Acrolinx Plugin Framework and is required. 
+Demo code is to showcase [Acrolinx](http://www.acrolinx.com/) sidebar integration for a Mac OS X Application. To understand the demo code an introduction to Acrolinx Sidebar, Acrolinx Application for Mac and Acrolinx Plugin Framework and is needed. 
 
 ###Acrolinx Sidebar
 The Acrolinx sidebar is designed to show up beside the window where you edit your content. You use it for checking, reviewing, and correcting your content.
@@ -10,7 +10,7 @@ The Acrolinx sidebar is designed to show up beside the window where you edit you
 ![Sidebar](./doc/AcrolinxSidebar.png)
 
 ###Acrolinx Application for Mac
-Acrolinx Applicaiton for Mac helps you open a sidebar for a document open in an editor application like MS Word for Mac. Acrolinx application can show sidebar for only those applications for which it finds an Acrolinx plugin installed. 
+Acrolinx Applicaiton for Mac helps you open a sidebar for a document open in an editor like Microsoft Word for Mac. Acrolinx application can show sidebar for only those applications for which it finds an Acrolinx plugin installed. 
 
 ![Architecture](./doc/ArcrolinxAppArc.png)
 
