@@ -3,7 +3,7 @@
 //  AcrolinxPlugin
 //
 //  Created by Julian Weinert on 06.01.15.
-//  Copyright (c) 2015 Julian Weinert Softwareentwicklung. All rights reserved.
+//  Copyright (c) 2015 Acrolinx GmbH. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
