@@ -1,12 +1,21 @@
 #Acrolinx OS X Sidebar Demo  
-Demo code for an integration of the Acrolinx sidebar for a Mac OS X Application.
 
-##Acrolinx Plugin Framework 
+##Introduction
 
+Demo code is to showcase [Acrolinx](http://www.acrolinx.com/) sidebar integration for a Mac OS X Application. To understand the demo code an introduction to Acrolinx Sidebar, Acrolinx Application for Mac and Acrolinx Plugin Framework and is required. 
 
-Acrolinx for Mac application can be used to check content of document open in an editor like Microsoft Word for Mac. For Acrolinx to be able to check it requires an Acrolinx Plugin written for particular target application. 
+###Acrolinx Sidebar
+The Acrolinx sidebar is designed to show up beside the window where you edit your content. You use it for checking, reviewing, and correcting your content.
 
-`AcrolinxPlugin.framework` helps develop Acrolinx plugin for different target applications. The framework is available with this sample code in folder `AcrolinxPluginSDKForMac`
+![Sidebar](./doc/AcrolinxSidebar.png)
+
+###Acrolinx Application for Mac
+Acrolinx Applicaiton for Mac helps you open a sidebar for a document open in an editor application like MS Word for Mac. Acrolinx application can show sidebar for only those applications for which it finds an Acrolinx plugin installed. 
+
+![Architecture](./doc/ArcrolinxAppArc.png)
+
+###Acrolinx Plugin Framework  
+`AcrolinxPlugin.framework` helps develop Acrolinx plugin for different applications. The framework is available with this sample code in folder `AcrolinxPluginSDKForMac`
 
 ##Sample - Acrolinx Plugin for TextEdit
 
@@ -93,6 +102,8 @@ You should also know:
 * Create new Cocoa class file. Set Principal Class in project info.plist to the given class name.
 * In project build setting add `AcrolinxPlugin.framework` location in Frame Search Path.
 * For Acrolinx application to identify and load the plugin the principal plugin class should be derived from the class `AcrolinxPlugin`. It should also implement protocols `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
+
+![Project Skeleton](./doc/CodeSkeleton1.png)
 
 ##Plugin Identification
 
