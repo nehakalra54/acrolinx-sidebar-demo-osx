@@ -145,7 +145,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 }
 ```    
 
-* The framework provides a method to create the sidebar options needed for initializing the sidebar. The options include required version information and client signature etc. The Plugin can add more options keys like "readOnlySuggestions" is needed.
+* The framework provides a method to create the sidebar options needed for initializing the sidebar. The options include required version information and client signature etc. The Plugin can add more options keys like "readOnlySuggestions" if needed.
 
 ## Extraction and Lookup
 
