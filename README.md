@@ -56,31 +56,20 @@ To build and run the sample plugin, follow these steps:
 2. Copy the output file AcrolinxPluginTextEdit.acpl to your PlugIns folder `(“~/Library/Application Support/PluginIns”)`
 3. Run the Acrolinx application. 
 4. In the preferences window, enter a valid Acrolinx server address.
-
 ![Empty Preference Screen](./doc/PreferenceEmpty.png)
-
 ![Preference Screen](./doc/PreferenceWithValidServer.png)
 
 5. Open a TextEdit file. If you create a new document, you have to save it for the Acrolinx Plugin to work. You can also use the sample topspin.txt in the "acrolinx-sidebar-demo-osx/doc" folder. 
 
 6. Make sure TextEdit is the active application, go to the Acrolinx menu, and select “Show Sidebar”. The "Show Sidebar" menu is enabled only if the file extension is .txt or .rtf.
-
 ![Show Sidebar Menu](./doc/AcrolinxMenu.png)
-
 7. When the sidebar opens, enter your user credentials to log in. 
-
 ![Sidebar Login Screen](./doc/SidebarLogin.png)
-
 ![Sidebar after login](./doc/SidebarLoaded.png)
-
 8. When the sidebar is loaded, click Check.
-
 ![Sidebar after check](./doc/SidebarAfterCheck.png)
-
 9. After the check completes, cards should appear in the sidebar. Click a card to highlight the issue text in the document.
-
 ![Highlight](./doc/Highlight.png)
-
 10. Click a suggestion replaces the text in the document. 
 
 Note: If you edit the document manually then you have to run another check to update the cards in the sidebar for  highlighting and replacements to work properly. 
