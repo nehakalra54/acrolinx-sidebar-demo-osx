@@ -10,7 +10,7 @@ The Acrolinx sidebar helps writers to analyze, review, and correct their content
 ![Sidebar](./doc/AcrolinxSidebar.png)
 
 ###Acrolinx Application for Mac
-The Acrolinx Applicaiton provides a way for developers to show the sidebar for an open document in any number of editors like Microsoft Word. You can show a sidebar for only those applications for which an Acrolinx plugin is installed. 
+The Acrolinx Application provides a way for developers to show the sidebar for an open document in any number of editors like Microsoft Word. You can show a sidebar only for those applications for which an Acrolinx plugin is installed. 
 
 ![Architecture](./doc/ArcrolinxAppArc.png)
 
@@ -24,7 +24,7 @@ The sample shows how to use the `AcrolinxPlugin.framework` to develop an Acrolin
 
 ##Prerequisites
 
-Please contact Acrolinx SDK support (sdk-support@acrolinx.com) for consulting and getting your integration certified. This sample works with a test license on an internal Acrolinx server. This license is only meant for demonstration and developing purposes. Once you've finished your integration you'll have to get a license for your integration from Acrolinx.
+Please contact Acrolinx SDK support (sdk-support@acrolinx.com) for consulting and getting your integration certified. This sample works with a test license on an internal Acrolinx server. This license is provided for demonstration and developing purposes only. Once you have finished your integration, you have to get a license for your integration from Acrolinx.
 
 To build and run the sample, you need the following:
 
@@ -34,7 +34,7 @@ To build and run the sample, you need the following:
 
 For developing a new plugin, you also need:
 
-* AcrolinxPlugin.framework. 
+* `AcrolinxPlugin.framework`. 
 
 
 ##Configuration for Sample Plugin
@@ -52,9 +52,9 @@ The Acrolinx Server checks if a connecting client is allowed to connect. The sam
 
 To build and run the sample plugin, follow these steps: 
 
-1. Open AcrolinxPluginTextEdit.xcodeproject and build the project in Xcode.
+1. Open `AcrolinxPluginTextEdit.xcodeproject` and build the project in Xcode.
 
-2. Copy the output file AcrolinxPluginTextEdit.acpl to your PlugIns folder `(“~/Library/Application Support/PluginIns”)`
+2. Copy the output file `AcrolinxPluginTextEdit.acpl` to your PlugIns folder `~/Library/Application Support/PluginIns`
 
 3. Run the Acrolinx application. 
 
@@ -64,9 +64,9 @@ To build and run the sample plugin, follow these steps:
 
 	![Preference Screen](./doc/PreferenceWithValidServer.png)
 
-5. Open a TextEdit file. If you create a new document, you have to save it for the Acrolinx Plugin to work. You can also use the sample topspin.txt in the "acrolinx-sidebar-demo-osx/doc" folder. 
+5. Open a text file in TextEdit. If you create a document, you have to first save it for the Acrolinx Plugin to work. You can also use the test file `topspin.txt` in the `acrolinx-sidebar-demo-osx/doc` folder. 
 
-6. Make sure TextEdit is the active application, go to the Acrolinx menu, and select “Show Sidebar”. The "Show Sidebar" menu is enabled only if the file extension is ".txt" or ".rtf".
+6. Make sure TextEdit is the active application. Go to the Acrolinx menu, and select “Show Sidebar”. The "Show Sidebar" menu is enabled only if the file extension is ".txt" or ".rtf".
 
 	![Show Sidebar Menu](./doc/AcrolinxMenu.png)
 
@@ -84,9 +84,9 @@ To build and run the sample plugin, follow these steps:
 
 	![Highlight](./doc/Highlight.png)
 
-10. Click a suggestion replaces the text in the document. 
+10. Clicking a suggestion replaces the text in the document. 
 
-Note: If you edit the document manually then you have to run another check to update the cards in the sidebar for  highlighting and replacements to work properly. 
+Note: If you edit the document manually, then you have to run another check to update the cards in the sidebar for  highlighting and replacements to work properly. 
 
 #Writing new Acrolinx Sidebar Plugin
 
@@ -97,27 +97,27 @@ To develop an Acrolinx plugin for an application, you need the following:
 * Acrolinx application (min version 1.4.0.613)
 * Test server credentials
 * Client signature
-* AcrolinxPlugin.framework. The framework is available with this sample code in the `AcrolinxPluginSDKForMac` folder.
+* `AcrolinxPlugin.framework`. The framework is available with this sample code in the `AcrolinxPluginSDKForMac` folder.
 
 You should also know:
 
-* The bundle identifier of the application for which you are developing an Acrolinx Plugin. You can find the bundle identifier in the info.plist file inside the application's bundle.
+* The bundle identifier of the application for which you are developing an Acrolinx Plugin. You can find the bundle identifier in the `info.plist` file inside the application's bundle.
 * How to find a list of open documents and identify the active document. The Acrolinx application creates a sidebar for each document. The plugin should keep track of the document and its sidebar.
 * How to extract content from a document.
 * How to highlight and replace text for a given range.
 
 ##Plugin Project Setup
 
-* Create an Xcode project of type Bundle.
-* Create new Cocoa class file. Set Principal Class in project info.plist to the given class name.
-* In project build setting, add `AcrolinxPlugin.framework` location in Frame Search Path.
-* For Acrolinx application to identify and load the plugin, the principal plugin class should be derived from the class `AcrolinxPlugin`. It should also implement protocols `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
+1. Create an Xcode project of type Bundle.
+2. Create Cocoa class file. Set Principal Class in project `info.plist` to the given class name.
+3. In project build setting, add `AcrolinxPlugin.framework` location in Frame Search Path.
+4. For Acrolinx application to identify and load the plugin, the principal plugin class should be derived from the class `AcrolinxPlugin`. It should also implement protocols `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
 
 ![Project Skeleton](./doc/CodeSkeleton1.png)
 
 ##Plugin Identification
 
-* When Acrolinx application is launched, it loads all supported plugins from the “~/Library/Application Support/PluginIns” folder.
+* When Acrolinx application is launched, it loads all supported plugins from the `~/Library/Application Support/PluginIns` folder.
 * Supported plugin is a plugin bundle whose principal
 class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
 
@@ -141,14 +141,14 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
     
     NSMutableDictionary *sidebarOptions = [self createSidebarOptionsForPlugin];
     
-    // Parameter to make the sidebar readonly.
+    // Parameter to make the sidebar read only.
     //[sidebarOptions setValue:@"true" forKey:@"readOnlySuggestions"];
     
     [[[self sidebarController] JSInterface] initializeSidebarWithOptions:sidebarOptions];
 }
 ```    
 
-* The framework provides a method to create the sidebar options needed for initializing the sidebar. The options include required version information and client signature etc. The Plugin can add more options keys like "readOnlySuggestions" if needed.
+* The framework provides a method to create the sidebar options needed for initializing the sidebar. The options include required version information,  client signature and so on. If needed, the plugin can add more option keys like "readOnlySuggestions".
 
 ## Extraction and Lookup
 
@@ -166,12 +166,12 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 * Plugin's principal class should implement `AcrolinxSidebarDelegate` methods `sidebarDidSelectWithMatches` and `sidebarDidReplaceWithReplacements`.
 * When user selects a card in sidebar, these methods are called accordingly for highlighting or replacement. 
 * Parameter is an array of dictionaries which hold content, range, and replacements. 
-* The offsets correspond to the cotent sent to the server. 
+* The offsets correspond to the content sent to the server. 
 * The plugin should map these ranges to the actual ranges in the document and interact with the editor to highlight or replace text.
 * You can refer to the link [here](https://cdn.rawgit.com/acrolinx/acrolinx-sidebar-demo/v0.3.37/doc/pluginDoc/interfaces/_plugin_interfaces_.acrolinxplugin.html#selectranges) for possible lookup strategies.
 
 ##Framework Reference
-Refer to doc/com.acrolinx.AcrolinxPlugin-Framework.docset for the class reference.
+Refer to `doc/com.acrolinx.AcrolinxPlugin-Framework.docset` for the class reference.
 
 
 ## License
