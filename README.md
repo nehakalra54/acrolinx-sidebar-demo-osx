@@ -1,28 +1,28 @@
-#Acrolinx OS X Sidebar Demo  
+# Acrolinx OS X Sidebar Demo  
 
-##Introduction
+## Introduction
 
 The following instructions and sample code will help you integrate [Acrolinx](http://www.acrolinx.com/) in a Mac OS X Application. 
 
-###Acrolinx Sidebar
+### Acrolinx Sidebar
 The Acrolinx sidebar helps writers to analyze, review, and correct their content. The sidebar is designed to appear in the editor or editing environment. 
 
 ![Sidebar](./doc/AcrolinxSidebar.png)
 
-###Acrolinx Application for Mac
+### Acrolinx Application for Mac
 The Acrolinx Application provides a way for developers to show the sidebar for an open document in any number of editors like Microsoft Word. You can show a sidebar only for those applications for which an Acrolinx plugin is installed. 
 
 ![Architecture](./doc/ArcrolinxAppArc.png)
 
-###Acrolinx Plugin Framework  
+### Acrolinx Plugin Framework  
 `AcrolinxPlugin.framework` helps you develop an Acrolinx plugin for different applications. The framework is available with this sample code in the `AcrolinxPluginSDKForMac` folder.
 
-##Sample - Acrolinx Plugin for TextEdit
+## Sample - Acrolinx Plugin for TextEdit
 
 
 The sample shows how to use the `AcrolinxPlugin.framework` to develop an Acrolinx plugin for the TextEdit application.
 
-##Prerequisites
+## Prerequisites
 
 Please contact Acrolinx SDK support (sdk-support@acrolinx.com) for consulting and getting your integration certified. This sample works with a test license on an internal Acrolinx server. This license is provided for demonstration and developing purposes only. Once you have finished your integration, you have to get a license for your integration from Acrolinx.
 
@@ -37,7 +37,7 @@ For developing a new plugin, you also need:
 * `AcrolinxPlugin.framework`. 
 
 
-##Configuration for Sample Plugin
+## Configuration for Sample Plugin
 
 The Acrolinx Server checks if a connecting client is allowed to connect. The sample code includes a valid client signature so you can connect your client to a test server. To enter a new client signature in the code, follow these steps:
 
@@ -47,7 +47,7 @@ The Acrolinx Server checks if a connecting client is allowed to connect. The sam
 4. Edit the value to use the client signature that you received from Acrolinx. 
 
 
-##Build and Run Sample Plugin
+## Build and Run Sample Plugin
 
 
 To build and run the sample plugin, follow these steps: 
@@ -88,9 +88,9 @@ To build and run the sample plugin, follow these steps:
 
 Note: If you edit the document manually, then you have to run another check to update the cards in the sidebar for  highlighting and replacements to work properly. 
 
-#Writing new Acrolinx Sidebar Plugin
+# Writing new Acrolinx Sidebar Plugin
 
-##Prerequisites
+## Prerequisites
 
 To develop an Acrolinx plugin for an application, you need the following:
 
@@ -106,7 +106,7 @@ You should also know:
 * How to extract content from a document.
 * How to highlight and replace text for a given range.
 
-##Plugin Project Setup
+## Plugin Project Setup
 
 1. Create an Xcode project of type Bundle.
 2. Create Cocoa class file. Set Principal Class in project `info.plist` to the given class name.
@@ -115,13 +115,13 @@ You should also know:
 
 ![Project Skeleton](./doc/CodeSkeleton1.png)
 
-##Plugin Identification
+## Plugin Identification
 
 * When Acrolinx application is launched, it loads all supported plugins from the `~/Library/Application Support/PluginIns` folder.
 * Supported plugin is a plugin bundle whose principal
 class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `AcrolinxPluginProtocol` and `AcrolinxSidebarDelegate`.
 
-##Loading Sidebar
+## Loading Sidebar
 
 * Acrolinx application continuously checks if it has a plugin for a currently active application. 
 * It queries the appropriate plugin for `frontmostFilePath` of the documents open in target application. 
@@ -152,7 +152,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 
 ## Extraction and Lookup
 
-###Extraction 
+### Extraction 
 
 * When user clicks "Check" in the sidebar, the `AcrolinxSidebarInterface` gets a request to initiate check. 
 * The plugin's principal class must implement `AcrolinxPluginProtocol` method `startGlobalCheck`. 
@@ -161,7 +161,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 [[[self sidebarController] JSInterface] performGlobalCheck:stringExtractedFromEditor];
 ``` 
 
-###Lookup
+### Lookup
 
 * Plugin's principal class should implement `AcrolinxSidebarDelegate` methods `sidebarDidSelectWithMatches` and `sidebarDidReplaceWithReplacements`.
 * When user selects a card in sidebar, these methods are called accordingly for highlighting or replacement. 
@@ -170,7 +170,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 * The plugin should map these ranges to the actual ranges in the document and interact with the editor to highlight or replace text.
 * You can refer to the link [here](https://cdn.rawgit.com/acrolinx/acrolinx-sidebar-demo/v0.3.37/doc/pluginDoc/interfaces/_plugin_interfaces_.acrolinxplugin.html#selectranges) for possible lookup strategies.
 
-##Framework Reference
+## Framework Reference
 Refer to `doc/com.acrolinx.AcrolinxPlugin-Framework.docset` for the class reference.
 
 
