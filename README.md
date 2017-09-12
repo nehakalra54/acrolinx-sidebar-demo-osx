@@ -58,33 +58,30 @@ To build and run the sample plugin, follow these steps:
 
 3. Run the Acrolinx application. 
 
-4. In the preferences window, enter a valid Acrolinx server address.
+4. Open a text file in TextEdit. If you create a document, you have to first save it for the Acrolinx Plugin to work. You can also use the test file `topspin.txt` in the `acrolinx-sidebar-demo-osx/doc` folder. 
 
-	![Empty Preference Screen](./doc/PreferenceEmpty.png)
+5. Make sure TextEdit is the active application. Go to the Acrolinx menu, and select “Show Sidebar”. The "Show Sidebar" menu is enabled only if the file extension is ".txt" or ".rtf".
 
-	![Preference Screen](./doc/PreferenceWithValidServer.png)
+	![Show Sidebar Menu](./doc/NewAcrolinxMenu.png)
 
-5. Open a text file in TextEdit. If you create a document, you have to first save it for the Acrolinx Plugin to work. You can also use the test file `topspin.txt` in the `acrolinx-sidebar-demo-osx/doc` folder. 
+6. Click on “Show Sidebar” to open the Acrolinx new Start Page. Enter the valid Acrolinx Server Address 
 
-6. Make sure TextEdit is the active application. Go to the Acrolinx menu, and select “Show Sidebar”. The "Show Sidebar" menu is enabled only if the file extension is ".txt" or ".rtf".
-
-	![Show Sidebar Menu](./doc/AcrolinxMenu.png)
-
-7. When the sidebar opens, enter your user credentials to log in. 
-
-	![Sidebar Login Screen](./doc/SidebarLogin.png)
+	![StartPage Login Screen](./doc/AcrolinxStartPage.png)
+ 
+   If the server address is valid you will be redirected to Sign-In Page, where after clicking on Sign-In you will be redirected to        Acrolinx dashboard to login via browser.     
+	![SignIn Page](./doc/AcrolinxSignInPage.png)
 
 	![Sidebar after login](./doc/SidebarLoaded.png)
 
-8. When the sidebar is loaded, click Check.
+7. When the sidebar is loaded, click Check.
 
 	![Sidebar after check](./doc/SidebarAfterCheck.png)
 
-9. After the check completes, cards should appear in the sidebar. Click a card to highlight the issue text in the document.
+8. After the check completes, cards should appear in the sidebar. Click a card to highlight the issue text in the document.
 
 	![Highlight](./doc/Highlight.png)
 
-10. Clicking a suggestion replaces the text in the document. 
+9. Clicking a suggestion replaces the text in the document. 
 
 Note: If you edit the document manually, then you have to run another check to update the cards in the sidebar for  highlighting and replacements to work properly. 
 
