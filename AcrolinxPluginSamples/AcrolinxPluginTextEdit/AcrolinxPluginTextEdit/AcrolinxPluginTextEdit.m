@@ -184,8 +184,8 @@ static TextEditApplication *textEditApplication;
 }
 
 
-- (void)loadSidebarURL:(NSURL *)sidebarURL {
-    [[self sidebarController] loadURL:sidebarURL];
+- (void)loadStartPage:(NSURL *)startPageURL {
+    [[self sidebarController] loadStartPageURL:startPageURL];
 }
 
 - (void)startGlobalCheck {
