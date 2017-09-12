@@ -95,11 +95,11 @@
 
 /**
  *
- *	Loads the Acrolinx Sidebar HTML from the specified URL.
+ *	Loads the Acrolinx Start Page index HTML from the specified URL.
  *
- *	@param sidebarURL A URL of sidebar HTML.
+ *	@param startPageURL A URL of start page HTML.
  */
-- (void)loadSidebarURL:(NSURL *)sidebarURL;
+- (void)loadStartPage:(NSURL *)startPageURL;
 
 /**
  *

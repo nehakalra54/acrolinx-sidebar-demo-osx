@@ -27,6 +27,7 @@
 @property (nonatomic, retain) AcrolinxSidebarInterface *JSInterface;
 
 - (void)loadURL:(NSURL *)URL;
+- (void)loadStartPageURL:(NSURL *)URL;
 - (BOOL)isWindowVisible;
 
 @end
