@@ -64,11 +64,11 @@ To build and run the sample plugin, follow these steps:
 
 	![Show Sidebar Menu](./doc/NewAcrolinxMenu.png)
 
-6. Click on “Show Sidebar” to open the Acrolinx new Start Page. Enter the valid Acrolinx Server Address 
+6. Click on “Show Sidebar” to open the Acrolinx Start Page. Enter the valid Acrolinx Server Address 
 
 	![StartPage Login Screen](./doc/AcrolinxStartPage.png)
  
-   If the server address is valid you will be redirected to Sign-In Page, where after clicking on Sign-In you will be redirected to        Acrolinx dashboard to login via browser.     
+   If the server address is valid user is ready for Sign-In.
 	![SignIn Page](./doc/AcrolinxSignInPage.png)
 
 	![Sidebar after login](./doc/SidebarLoaded.png)
