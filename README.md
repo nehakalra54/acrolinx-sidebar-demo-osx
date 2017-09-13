@@ -68,8 +68,9 @@ To build and run the sample plugin, follow these steps:
 
 	![StartPage Login Screen](./doc/AcrolinxStartPage.png)
  
-   If the server address is valid user is ready for Sign-In.
-	![SignIn Page](./doc/AcrolinxSignInPage.png)
+    If the server address is valid user is ready for Sign-In.
+    
+   	![SignIn Page](./doc/AcrolinxSignInPage.png)
 
 	![Sidebar after login](./doc/SidebarLoaded.png)
 
