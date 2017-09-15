@@ -126,6 +126,11 @@ static TextEditApplication *textEditApplication;
     return YES;
 }
 
++ (NSString *) minimumSidebarVersion {
+    // Currently we donot have minimumn sidebar version for test edit plugin.
+    return @"";
+}
+
 - (NSString *)openFileAtPath:(NSString *)filePath {
     LLog(@"NSWorkspace did open file.");
     [[self textEditApplication] activate];

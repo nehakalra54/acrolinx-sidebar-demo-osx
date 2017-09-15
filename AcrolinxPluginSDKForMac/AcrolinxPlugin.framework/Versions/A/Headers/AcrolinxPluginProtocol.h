@@ -95,6 +95,14 @@
 
 /**
  *
+ *  Used to determine the restriction for plugin based on sidebar version.
+ *
+ *  @return A string containing the minimum Sidebar version
+ */
++ (NSString *)minimumSidebarVersion;
+
+/**
+ *
  *	Loads the Acrolinx Start Page index HTML from the specified URL.
  *
  *	@param startPageURL A URL of start page HTML.
