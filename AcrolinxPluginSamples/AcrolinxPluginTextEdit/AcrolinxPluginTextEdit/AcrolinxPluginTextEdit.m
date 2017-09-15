@@ -127,8 +127,7 @@ static TextEditApplication *textEditApplication;
 }
 
 + (NSString *) minimumSidebarVersion {
-    // Currently we donot have minimumn sidebar version for test edit plugin.
-    return @"";
+    return @"14.5";
 }
 
 - (NSString *)openFileAtPath:(NSString *)filePath {
