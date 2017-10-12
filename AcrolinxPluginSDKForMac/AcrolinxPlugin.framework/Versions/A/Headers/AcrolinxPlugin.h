@@ -35,11 +35,11 @@ FOUNDATION_EXPORT const unsigned char AcrolinxPluginVersionString[];
 #import "AcrolinxPluginProtocol.h"
 #import "AcrolinxSidebarInterface.h"
 #import "AcrolinxSidebarController.h"
-#import "AcrolinxAuxiliaryWebWindowController.h"
 #import "IndexStore.h"
 #import "XMLCleaner.h"
 #import "XMLLookUpHelper.h"
 #import "LocalStorageManager.h"
+#import "AcrolinxWebViewNewWindowHandler.h"
 
 
 void dispatch_async_main(dispatch_block_t block);
@@ -75,6 +75,22 @@ void dispatch_sync_main(dispatch_block_t block);
  *	@return A string representing the bundle identifier
  */
 + (NSString *)bundleIdentifier;
+
+/**
+ *
+ *	Returns the name of the application the plugin is written for.
+ *
+ *	@return A string representing the target application's name.
+ */
+- (NSString *)targetApplicationName;
+
+/**
+ *
+ *	Returns the version of the application the plugin is written for.
+ *
+ *	@return A string representing the target application's version.
+ */
+- (NSString *)targetApplicationVersion;
 
 /**
  *	Creates and returns sidebar options.

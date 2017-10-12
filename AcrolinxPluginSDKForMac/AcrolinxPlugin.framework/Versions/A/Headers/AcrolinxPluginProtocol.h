@@ -100,7 +100,7 @@
  *  @return A string containing the minimum Sidebar version
  */
 + (NSString *)minimumSidebarVersion;
-
+ 
 /**
  *
  *	Loads the Acrolinx Start Page index HTML from the specified URL.

@@ -27,7 +27,14 @@ typedef NS_OPTIONS(NSUInteger, XMLCleanOptions){
 	 *	Removes <w:binData> tags
 	 */
 	XMLCleanOptionBinData		= 1 << 0,
-	
+
+    /**
+     *	@author Puneet Sanchiher
+     *
+     *	Removes <image> tags
+     */
+    XMLCleanOptionImageData		= 1 << 1,
+
 	/**
 	 *	@author Julian Weinert
 	 *
