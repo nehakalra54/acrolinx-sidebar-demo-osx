@@ -60,8 +60,9 @@
  *	Tells the JavaScript sidebar object to perform a global document check.
  *	
  *	@param checkString NSString with contents of document.
+ *  @param ranges: required for new feature as check selection.
  */
-- (void)performGlobalCheck:(NSString *)checkString;
+- (void)performGlobalCheck:(NSString *)checkString withRanges:(NSArray *)ranges;
 
 /**
  *

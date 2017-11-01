@@ -100,7 +100,15 @@
  *  @return A string containing the minimum Sidebar version
  */
 + (NSString *)minimumSidebarVersion;
- 
+
+/**
+ *
+ *  Used to determine whether or not we support check selection for a particular plugin.
+ *
+ *  @return A dictionary containing support for check selection.
+ */
++ (NSArray *)checkSelectionSupported;
+
 /**
  *
  *	Loads the Acrolinx Start Page index HTML from the specified URL.
@@ -119,7 +127,7 @@
  *
  *	Tells the plugin to perform a global check.
  */
-- (void)startGlobalCheck;
+- (void)startGlobalCheck:(NSDictionary *)selectionOption;
 
 /**
  *

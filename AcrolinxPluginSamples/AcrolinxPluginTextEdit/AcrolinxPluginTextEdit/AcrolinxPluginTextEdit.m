@@ -29,6 +29,9 @@ tell application \"TextEdit\" \n\
     set color of front document to {0, 0, 0} \n\
 end tell";
 
+NSString *const kSelectedContentTextRangeScriptFormat =@"tell application \"System Events\" to tell application process \"TextEdit\" to tell attribute \"AXSelectedTextRange\" of text area 1 of scroll area 1 of window 1 to set range to its value \n\
+return range";
+
 @interface AcrolinxPluginTextEdit () <AcrolinxPluginProtocol, AcrolinxSidebarDelegate>
 
 @property (nonatomic, retain) NSString *ownFilePath;
@@ -130,6 +133,15 @@ static TextEditApplication *textEditApplication;
     return @"14.5";
 }
 
++ (NSArray *) checkSelectionSupported {
+    // Set the key(checkSelection) to true to make check selection working.
+    NSDictionary *checkSelectionOptions = @{ @"checkSelection" : @false };
+    NSData *checkSelectionData = [NSJSONSerialization dataWithJSONObject:checkSelectionOptions options:0 error:nil];
+    NSError *error = nil; //for error
+    NSArray *checkSelectionArrayObject = [NSJSONSerialization JSONObjectWithData: checkSelectionData options: NSJSONReadingMutableContainers error: &error];
+    return checkSelectionArrayObject;
+}
+
 - (NSString *)openFileAtPath:(NSString *)filePath {
     LLog(@"NSWorkspace did open file.");
     [[self textEditApplication] activate];
@@ -192,16 +204,53 @@ static TextEditApplication *textEditApplication;
     [[self sidebarController] loadStartPageURL:startPageURL];
 }
 
-- (void)startGlobalCheck {
+- (void)startGlobalCheck:(NSDictionary *)options {
     dispatch_async_main(^{
         NSString *fileContents = [[[[[self textEditApplication] documents] objectAtIndex:0] properties] valueForKey:@"text"];
         
         // Reset index store for every check
         _indexStore = nil;
         
-        [[[self sidebarController] JSInterface] performGlobalCheck:fileContents];
+        // Check Selection implementation
+        NSArray *ranges = [self getSelectedContent:options];
+        
+        [[[self sidebarController] JSInterface] performGlobalCheck:fileContents withRanges:ranges];
     });
+}
 
+- (NSArray *)getSelectedContent:(id)options {
+    NSMutableArray *selectedContentArray = [NSMutableArray array];
+    // Uncomment the code to make check selection working.
+    /*if(![options isEqual: @"undefined"]){
+        int selectionValue = [[options objectForKey:@"selection"] intValue];
+        int numberWithValue =[@1 intValue];
+        if(selectionValue == numberWithValue)
+        {
+            NSString *selectedContentTextRangeScript = [NSString stringWithFormat:kSelectedContentTextRangeScriptFormat];
+            NSDictionary *errorDict;
+            NSAppleScript *script = [[NSAppleScript alloc] initWithSource:selectedContentTextRangeScript];
+            NSAppleEventDescriptor *scriptResult = [script executeAndReturnError:&errorDict];
+            
+            if (!scriptResult) {
+                LLog(@"Provide accessibilty to Acrolinx Application under System Preferences to run check selection: %@", [errorDict valueForKey:@"NSAppleScriptErrorBriefMessage"]);
+                return nil ;
+            }
+            else
+            {
+                if ((nil != [scriptResult descriptorAtIndex:1]) && (nil != [scriptResult descriptorAtIndex:2])) {
+                    
+                    NSUInteger loc = 0;
+                    NSUInteger len = 0;
+                    
+                    [[[scriptResult descriptorAtIndex:1] data] getBytes:&loc length:sizeof(loc)];
+                    [[[scriptResult descriptorAtIndex:2] data] getBytes:&len length:sizeof(len)];
+                    
+                    [selectedContentArray addObject: [NSArray arrayWithObjects:[NSNumber numberWithInteger:loc - 1],[NSNumber numberWithInteger:len],nil]];
+                }
+            }
+        }
+    }*/
+    return selectedContentArray;
 }
 
 - (void)fileDidSave {
