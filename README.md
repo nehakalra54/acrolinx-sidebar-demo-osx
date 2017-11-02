@@ -146,7 +146,7 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 }
 ```    
 
-* The framework provides a method to create the sidebar options needed for initializing the sidebar. The options include required version information,  client signature and so on. If needed, the plugin can add more option keys like "readOnlySuggestions".
+* The framework provides a method to create the sidebar options needed for initializing the sidebar. The options include required version information, client signature and so on. If needed, the plugin can add more option keys like "readOnlySuggestions".
 
 ## Extraction and Lookup
 
@@ -158,6 +158,11 @@ class `isSubclassOfClass` `AcrolinxPlugin` also it `conformsToProtocol` `Acrolin
 ```
 [[[self sidebarController] JSInterface] performGlobalCheck:stringExtractedFromEditor];
 ``` 
+Note: To enable Check Selection perform following steps:
+
+* Open file AcrolinxPluginTextEdit.m and uncomment the code in the method getSelectedContent.
+* Set the check selection key to true in method checkSelectionSupported and build TextEdit plugin.
+* Before running Acrolinx application enables its accessibility. This is needed as selection works on system events.
 
 ### Lookup
 
